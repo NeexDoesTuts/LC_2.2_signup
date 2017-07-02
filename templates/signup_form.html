@@ -11,29 +11,32 @@
     <body>
         <h2>Signup Form</h2>
         <form action="/signup" method="POST">
+            <p>
+                {{welcome}}
+            </p>
             <label>Username:
-                <input type="text">
+                <input type="text" name="username">
             </label>
             <p class="error">
-                {{username_error}}    
+                {{username_error}}
             </p>
 
             <label>Password:
-                <input type="password">
+                <input type="password" name="password">
             </label>
             <label>Verify password:
-                <input type="password">
+                <input type="password" name="password_repeat">
             </label>
             <p class="error">
-                {{password_match}}    
+                {{password_match}}
             </p>
             <p class="error">
-                {{password_error}}    
+                {{password_error}}
             </p>
 
 
             <label>E-mail (optional):
-                <input type="text">
+                <input type="text" name="email">
             </label>
             <p class="error">
 
