@@ -4,8 +4,8 @@
             Signup new user
         </title>
         <style>
-            label {display: block}
-            .error {color: red}        
+            .error {color: red}
+            
         </style>
     </head>
     <body>
@@ -14,33 +14,30 @@
             <p>
                 {{welcome}}
             </p>
-            <label>Username:
-                <input type="text" name="username">
-            </label>
-            <p class="error">
-                {{username_error}}
-            </p>
+            
+            <div class="form-field">
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username">
+                <span class="error">{{username_error}}</span>
+            </div>
 
-            <label>Password:
-                <input type="password" name="password">
-            </label>
-            <label>Verify password:
-                <input type="password" name="password_repeat">
-            </label>
-            <p class="error">
-                {{password_match}}
-            </p>
-            <p class="error">
-                {{password_error}}
-            </p>
+            <div class="form-field">
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password">            
+                <span class="error">{{password_error}}</span>
+            </div>
 
+            <div class="form-field">
+                <label for="password_repeat">Verify password:</label>
+                <input id="password_repeat" type="password" name="password_repeat">
+                <span class="error">{{password_repeat_error}}</span>
+            </div>
 
-            <label>E-mail (optional):
-                <input type="text" name="email">
-            </label>
-            <p class="error">
-
-            </p>
+            <div class="form-field">
+                <label for="email">E-mail (optional):</label>
+                <input id="email" type="text" name="email">
+                <span class="error">{{email_error}}</span>
+            </div>
 
             <input type="submit">
         </form>
