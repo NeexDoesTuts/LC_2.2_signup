@@ -4,7 +4,8 @@
             Signup new user
         </title>
         <style>
-            label {display: block}        
+            label {display: block}
+            .error {color: red}        
         </style>
     </head>
     <body>
@@ -13,16 +14,30 @@
             <label>Username:
                 <input type="text">
             </label>
+            <p class="error">
+                {{username_error}}    
+            </p>
+
             <label>Password:
                 <input type="password">
             </label>
             <label>Verify password:
                 <input type="password">
             </label>
-        
+            <p class="error">
+                {{password_match}}    
+            </p>
+            <p class="error">
+                {{password_error}}    
+            </p>
+
+
             <label>E-mail (optional):
                 <input type="text">
             </label>
+            <p class="error">
+
+            </p>
 
             <input type="submit">
         </form>
