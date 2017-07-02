@@ -25,16 +25,16 @@ def validate_signup_form():
     password_repeat = request.form["password_repeat"]
     email = request.form["email"]
     
-    if is_empty(username) and (is_empty(password) or is_empty(password_repeat)):
-        return render_template('signup_form.html', 
-                username_error="User field cannot be left empty.", 
-                password_error="Password fields cannot be left empty.")
-    elif is_empty(username):
-        return render_template('signup_form.html', username_error="User field cannot be left empty.")
-    elif is_empty(password) or is_empty(password_repeat):  
-        return render_template('signup_form.html', password_error="Password fields cannot be left empty.")
-    else: 
-        return render_template("signup_form.html", welcome="all good!")
+    # Check for emptiness and assign error messages
+    username_error = "User field cannot be left empty." if is_empty(username) else ""
+    password_error = "Password field cannot be left empty." if is_empty(password) else ""
+    password_repeat_error = "Password field cannot be left empty." if is_empty(password_repeat) else ""
+
+    return render_template('signup_form.html', 
+            username_error=username_error, 
+            password_error=password_error, 
+            password_repeat_error=password_repeat_error)
+
 
 
 if __name__ == "__main__":
