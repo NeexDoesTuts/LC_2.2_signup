@@ -7,13 +7,17 @@ def is_empty(str):
     else:
         return False
 
-def valid_username():
-    pass
+def valid_username(username):
+    if " " in username:
+        return False
+    if len(username) < 4 or len(username) > 20:
+        return False
+    return True
 
 def valid_password(password):
     if " " in password:
         return False
-    if len(password) < 3 or len(password) > 20:
+    if len(password) < 4 or len(password) > 20:
         return False
     return True
 
@@ -57,14 +61,28 @@ def validate_signup_form():
     password_repeat = request.form["password_repeat"]
     email = request.form["email"]
     
-    # Check for emptiness and assign error messages
-    username_error = "User field cannot be left empty." if is_empty(username) else ""
-    password_error = "Password field cannot be left empty." if is_empty(password) else ""
-    password_repeat_error = "Password field cannot be left empty." if is_empty(password_repeat) else ""
+    # Validate input fields
+    if is_empty(username):
+        username_error = "User field cannot be left empty." 
+    elif not valid_username(username):
+        username_error = "This is not a valid username."
+    else:
+        username_error = ""
 
-    # Validate data
-    password_error = "" if valid_password(password) else "Password must be between 3 and 20 characters. It can only contain XYZ."
-    password_repeat_error = "" if password_match(password, password_match) else "Passwords do not match"
+    if is_empty(password):
+        password_error = "Password field cannot be left empty." 
+    elif not valid_password(password):
+        password_error = "Password must be between 3 and 20 characters. It can only contain XYZ."
+    else:
+        password_error = ""
+
+    if is_empty(password_repeat):
+        password_repeat_error = "Password field cannot be left empty." 
+    elif not password_match(password, password_repeat):
+        password_repeat_error = "Passwords do not match"
+    else:
+        password_repeat_error = ""
+
     email_error = "" if valid_email(email) else "This is not a valid email"
 
     return render_template('signup_form.html', 
@@ -73,7 +91,6 @@ def validate_signup_form():
             password_repeat_error=password_repeat_error, 
             email_error=email_error)
 
-
-
 if __name__ == "__main__":
     app.run()
+
