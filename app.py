@@ -53,11 +53,15 @@ def index():
 @app.route("/welcome")
 def welcome():
     username = request.args.get('username')
-    return render_template("welcome.html", username=username)
+    title = "Welcome, " + username
+    return render_template("welcome.html", 
+                            username=username, 
+                            title=title)
 
 @app.route("/signup")
 def display_signup():
-    return render_template('signup_form.html')
+    title = "Please sign up!"
+    return render_template('signup_form.html', title=title,)
 
 @app.route("/signup", methods=["POST"])
 def validate_signup_form():
@@ -100,7 +104,9 @@ def validate_signup_form():
                 username_error=username_error, 
                 password_error=password_error, 
                 password_repeat_error=password_repeat_error, 
-                email_error=email_error)
+                email_error=email_error,
+                username=username,
+                email=email)
 
 if __name__ == "__main__":
     app.run()
