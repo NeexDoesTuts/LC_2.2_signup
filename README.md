@@ -1,4 +1,8 @@
-# Your Task
+# Signup Form
+## LC 101 Assignment 2.2
+[Assignment text as of 2017/07/04](https://github.com/LaunchCodeEducation/web-fundamentals/blob/2fbda27ea3bdf489f04eb9e0770860a1a4778883/assignments/user-signup/README.md)
+
+### Major requirements
 1. If the user's form submission is not valid, you should reject it and re-render the form with some feedback to inform the user of what they did wrong. The following things should trigger an error:
     * [x] The user leaves any of the following fields empty: username, password, verify password.
     * [x] The user's password and password-confirmation do not match.
