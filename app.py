@@ -74,14 +74,14 @@ def validate_signup_form():
     if is_empty(username):
         username_error = "User field cannot be left empty." 
     elif not valid_username(username):
-        username_error = "This is not a valid username."
+        username_error = "This is not a valid username. Must be between 3 and 20 characters. No spaces allowed."
     else:
         username_error = ""
 
     if is_empty(password):
         password_error = "Password field cannot be left empty." 
     elif not valid_password(password):
-        password_error = "Password must be between 3 and 20 characters. It can only contain XYZ."
+        password_error = "Password must be 3 to 20 characters. No spaces allowed."
     else:
         password_error = ""
 
@@ -92,7 +92,7 @@ def validate_signup_form():
     else:
         password_repeat_error = ""
 
-    email_error = "" if valid_email(email) else "This is not a valid email"
+    email_error = "" if valid_email(email) else "This is not a valid email. Must be 3 to 20 characters, one dot and no spaces."
 
     if (username_error=="" 
          and password_error=="" 
