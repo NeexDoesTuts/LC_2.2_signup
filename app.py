@@ -10,14 +10,14 @@ def is_empty(str):
 def valid_username(username):
     if " " in username:
         return False
-    if len(username) < 4 or len(username) > 20:
+    if len(username) < 3 or len(username) > 20:
         return False
     return True
 
 def valid_password(password):
     if " " in password:
         return False
-    if len(password) < 4 or len(password) > 20:
+    if len(password) < 3 or len(password) > 20:
         return False
     return True
 
@@ -49,6 +49,11 @@ app.config["DEBUG"] = True
 @app.route("/")
 def index():
     return redirect("/signup")
+
+@app.route("/welcome")
+def welcome():
+    username = request.args.get('username')
+    return render_template("welcome.html", username=username)
 
 @app.route("/signup")
 def display_signup():
@@ -85,11 +90,17 @@ def validate_signup_form():
 
     email_error = "" if valid_email(email) else "This is not a valid email"
 
-    return render_template('signup_form.html', 
-            username_error=username_error, 
-            password_error=password_error, 
-            password_repeat_error=password_repeat_error, 
-            email_error=email_error)
+    if (username_error=="" 
+         and password_error=="" 
+         and password_repeat_error=="" 
+         and email_error==""):
+        return redirect('welcome?username={}'.format(username))
+    else:
+        return render_template('signup_form.html', 
+                username_error=username_error, 
+                password_error=password_error, 
+                password_repeat_error=password_repeat_error, 
+                email_error=email_error)
 
 if __name__ == "__main__":
     app.run()
