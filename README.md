@@ -1,4 +1,4 @@
-# Signup Form
+# User Signup
 ## LC 101 Assignment 2.2
 [Assignment text as of 2017/07/04](https://github.com/LaunchCodeEducation/web-fundamentals/blob/2fbda27ea3bdf489f04eb9e0770860a1a4778883/assignments/user-signup/README.md)
 
